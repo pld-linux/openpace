@@ -1,0 +1,38 @@
+--- openpace-1.0.2/bindings/python/Makefile.am.orig	2016-06-09 12:23:01.000000000 +0200
++++ openpace-1.0.2/bindings/python/Makefile.am	2017-11-25 21:09:35.571413585 +0100
+@@ -13,11 +13,11 @@
+ bin_SCRIPTS = cvc_rehash
+ 
+ do_subst=$(SED)\
+-	-e's,[@]CFLAGS[@],$(CFLAGS),g'\
+-	-e's,[@]CPPFLAGS[@],$(CPPFLAGS),g'\
+-	-e's,[@]CRYPTO_CFLAGS[@],$(CRYPTO_CFLAGS),g'\
+-	-e's,[@]CRYPTO_LIBS[@],'"$(CRYPTO_LIBS)"',g'\
+-	-e's,[@]LIBS[@],$(LIBS),g'\
++	-e's^[@]CFLAGS[@]^$(CFLAGS)^g'\
++	-e's^[@]CPPFLAGS[@]^$(CPPFLAGS)^g'\
++	-e's^[@]CRYPTO_CFLAGS[@]^$(CRYPTO_CFLAGS)^g'\
++	-e's^[@]CRYPTO_LIBS[@]^'"$(CRYPTO_LIBS)"'^g'\
++	-e's^[@]LIBS[@]^$(LIBS)^g'\
+ 	-e's,[@]OPENPACE_CFLAGS[@],-I$(top_srcdir)/src,g'\
+ 	-e's,[@]OPENPACE_LIBS[@],-L$(top_builddir)/src/.libs -leac,g'\
+ 	-e's,[@]PACKAGE_NAME[@],$(PACKAGE_NAME),g'\
+--- openpace-1.0.2/bindings/ruby/Makefile.am.orig	2017-07-20 13:34:57.000000000 +0200
++++ openpace-1.0.2/bindings/ruby/Makefile.am	2017-11-25 21:12:17.738078402 +0100
+@@ -12,11 +12,11 @@
+ 
+ do_subst=$(SED)\
+ 	-e's,[@]prefix[@],$(prefix),g'\
+-	-e's,[@]CFLAGS[@],$(CFLAGS),g'\
+-	-e's,[@]LDFLAGS[@],$(LDFLAGS),g'\
+-	-e's,[@]CPPFLAGS[@],$(CPPFLAGS),g'\
+-	-e's,[@]CRYPTO_CFLAGS[@],$(CRYPTO_CFLAGS),g'\
+-	-e's,[@]CRYPTO_LIBS[@],'"$(CRYPTO_LIBS)"',g'\
++	-e's^[@]CFLAGS[@]^$(CFLAGS)^g'\
++	-e's^[@]LDFLAGS[@]^$(LDFLAGS)^g'\
++	-e's^[@]CPPFLAGS[@]^$(CPPFLAGS)^g'\
++	-e's^[@]CRYPTO_CFLAGS[@]^$(CRYPTO_CFLAGS)^g'\
++	-e's^[@]CRYPTO_LIBS[@]^'"$(CRYPTO_LIBS)"'^g'\
+ 	-e's,[@]OPENPACE_CFLAGS[@],-I$(abs_top_srcdir)/src,g'\
+ 	-e's,[@]OPENPACE_LIBS[@],$(abs_top_builddir)/src/.libs/libeac.so,g'
+ 

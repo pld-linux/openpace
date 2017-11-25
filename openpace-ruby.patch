@@ -1,0 +1,11 @@
+--- openpace-1.0.2/bindings/ruby/Makefile.am.orig	2017-11-25 21:42:23.171391118 +0100
++++ openpace-1.0.2/bindings/ruby/Makefile.am	2017-11-25 22:17:17.931367201 +0100
+@@ -30,7 +30,7 @@
+ 	$(SWIG) -ruby -outdir $(builddir) -o eac_wrap.c -I$(srcdir)/.. $(srcdir)/../eac.i
+ 
+ ext/Makefile: ext/extconf.rb eac_wrap.c $(top_builddir)/src/libeac.la
+-	cd ext && $(RUBY) extconf.rb
++	cd ext && $(RUBY) extconf.rb --vendor
+ 	echo '' >> ext/Makefile
+ 	echo 'uninstall:' >> ext/Makefile
+ 	echo '	$$(RM) $$(RUBYARCHDIR)/$$(DLLIB)' >> ext/Makefile
