@@ -11,7 +11,7 @@ Summary:	Cryptographic library for EAC version 2
 Summary(pl.UTF-8):	Biblioteka kryptograficzna do EAC v2
 Name:		openpace
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/frankmorgner/openpace/releases
