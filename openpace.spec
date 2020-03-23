@@ -11,7 +11,7 @@ Summary:	Cryptographic library for EAC version 2
 Summary(pl.UTF-8):	Biblioteka kryptograficzna do EAC v2
 Name:		openpace
 Version:	1.0.2
-Release:	3
+Release:	4
 License:	GPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/frankmorgner/openpace/releases
@@ -147,6 +147,7 @@ Wiązania języka Ruby do biblioteki OpenPACE.
 %{__autoheader}
 %{__automake}
 %configure \
+	PYTHON=%{__python} \
 	JAVAC=javac \
 	%{?with_golang:--enable-go} \
 	%{?with_java:--enable-java} \
