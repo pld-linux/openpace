@@ -71,9 +71,7 @@ Statyczna biblioteka OpenPACE.
 Summary:	API documentation for OpenPACE library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki OpenPACE
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for OpenPACE library.
