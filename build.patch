@@ -1,0 +1,24 @@
+--- openpace-1.1.2/src/eac.c~	2021-07-08 13:32:38.000000000 +0200
++++ openpace-1.1.2/src/eac.c	2021-10-14 22:52:32.824753609 +0200
+@@ -104,8 +104,8 @@
+ {
+     if (!ctx)
+         return 0;
+-
+-    return BN_zero(ctx->ssc);
++    BN_zero(ctx->ssc);
++    return 0;
+ }
+ 
+ int EAC_set_ssc(const EAC_CTX *ctx, unsigned long ssc)
+--- openpace-1.1.2/src/eac/cv_cert.h~	2021-07-08 13:32:38.000000000 +0200
++++ openpace-1.1.2/src/eac/cv_cert.h	2021-10-14 22:55:21.327446475 +0200
+@@ -341,7 +341,7 @@
+  * @return Number of bytes successfully encoded or a negative value if an
+  * error occured.
+  */
+-int i2d_CVC_CERT(CVC_CERT *a, unsigned char **out);
++int i2d_CVC_CERT(const CVC_CERT *a, unsigned char **out);
+ 
+ /**
+  * @brief Duplicate a CV certificate

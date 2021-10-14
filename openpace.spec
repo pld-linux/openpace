@@ -10,15 +10,16 @@
 Summary:	Cryptographic library for EAC version 2
 Summary(pl.UTF-8):	Biblioteka kryptograficzna do EAC v2
 Name:		openpace
-Version:	1.0.2
-Release:	4
+Version:	1.1.2
+Release:	1
 License:	GPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/frankmorgner/openpace/releases
-Source0:	https://github.com/frankmorgner/openpace/releases/download/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	2fbd4d27d4726efe19417b471319c3a9
+Source0:	https://github.com/frankmorgner/openpace/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	55f22686b89026fd40f60358cc2247d0
 Patch0:		%{name}-optflags.patch
 Patch1:		%{name}-ruby.patch
+Patch2:		build.patch
 URL:		https://frankmorgner.github.io/openpace/
 BuildRequires:	autoconf >= 2.67
 BuildRequires:	automake
@@ -134,6 +135,7 @@ Wiązania języka Ruby do biblioteki OpenPACE.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # outdated versions
 %{__rm} -r docs/_static/{bootstrap-2.3.2,bootswatch-2.3.2}
@@ -153,7 +155,8 @@ Wiązania języka Ruby do biblioteki OpenPACE.
 	%{?with_ruby:--enable-ruby} \
 	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static}
-%{__make}
+
+%{__make} -j 1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -184,7 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cvc-print
 %attr(755,root,root) %{_bindir}/eactest
 %attr(755,root,root) %{_libdir}/libeac.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libeac.so.2
+%attr(755,root,root) %ghost %{_libdir}/libeac.so.3
 %dir %{_sysconfdir}/eac
 %dir %{_sysconfdir}/eac/cvc
 %{_sysconfdir}/eac/cvc/DECVC*
