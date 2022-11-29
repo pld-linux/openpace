@@ -35,8 +35,8 @@ BuildRequires:	pkgconfig
 %{?with_ruby:BuildRequires:	ruby-devel}
 BuildRequires:	sphinx-pdg
 BuildRequires:	swig
-BuildRequires:	swig-python
-BuildRequires:	swig-ruby
+%{?with_python:BuildRequires:	swig-python}
+%{?with_ruby:BuildRequires:	swig-ruby}
 Requires:	openssl >= 1.0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
