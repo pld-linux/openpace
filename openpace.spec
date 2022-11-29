@@ -25,6 +25,7 @@ BuildRequires:	autoconf >= 2.67
 BuildRequires:	automake
 BuildRequires:	doxygen
 %{?with_golang:BuildRequires:	gcc-go}
+BuildRequires:	gengetopt
 BuildRequires:	help2man
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool
@@ -34,6 +35,8 @@ BuildRequires:	pkgconfig
 %{?with_ruby:BuildRequires:	ruby-devel}
 BuildRequires:	sphinx-pdg
 BuildRequires:	swig
+BuildRequires:	swig-python
+BuildRequires:	swig-ruby
 Requires:	openssl >= 1.0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
