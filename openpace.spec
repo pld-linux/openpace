@@ -11,7 +11,7 @@ Summary:	Cryptographic library for EAC version 2
 Summary(pl.UTF-8):	Biblioteka kryptograficzna do EAC v2
 Name:		openpace
 Version:	1.1.2
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/frankmorgner/openpace/releases
@@ -172,6 +172,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} docs/_static/Makefile*
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*eac.la
+# packaged as %doc
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/openpace
 
 %if %{with python}
 %py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
@@ -240,6 +242,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{py_sitedir}/_eac.so
 %{py_sitedir}/chat.py[co]
 %{py_sitedir}/eac.py[co]
+%{py_sitedir}/pace_entity.py[co]
 %{py_sitedir}/OpenPACE-%{version}-py*.egg-info
 %endif
 
