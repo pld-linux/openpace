@@ -136,9 +136,9 @@ Wiązania języka Ruby do biblioteki OpenPACE.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
 
 # outdated versions
 %{__rm} -r docs/_static/{bootstrap-2.3.2,bootswatch-2.3.2}
