@@ -7,6 +7,9 @@
 %bcond_without	python		# Python binding
 %bcond_without	ruby		# Ruby binding
 #
+
+%{?with_java:%{?use_default_jdk}}
+
 Summary:	Cryptographic library for EAC version 2
 Summary(pl.UTF-8):	Biblioteka kryptograficzna do EAC v2
 Name:		openpace
@@ -27,12 +30,13 @@ BuildRequires:	doxygen
 %{?with_golang:BuildRequires:	gcc-go}
 BuildRequires:	gengetopt
 BuildRequires:	help2man
-%{?with_java:BuildRequires:	jdk}
+%{?with_java:%buildrequires_jdk}
 BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 1.0.2
 BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python-devel >= 2}
 %{?with_python:BuildRequires:	python-setuptools}
+BuildRequires:	rpmbuild(macros) >= 2.021
 %{?with_ruby:BuildRequires:	ruby-devel}
 BuildRequires:	sphinx-pdg
 BuildRequires:	swig
@@ -152,7 +156,8 @@ Wiązania języka Ruby do biblioteki OpenPACE.
 %{__automake}
 %configure \
 	PYTHON=%{__python} \
-	JAVAC=javac \
+	JAVAC="%{javac}" \
+	_ACJNI_JAVAC="%{javac}" \
 	%{?with_golang:--enable-go} \
 	%{?with_java:--enable-java} \
 	%{?with_python:--enable-python} \
