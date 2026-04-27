@@ -10,16 +10,16 @@
 Summary:	Cryptographic library for EAC version 2
 Summary(pl.UTF-8):	Biblioteka kryptograficzna do EAC v2
 Name:		openpace
-Version:	1.1.2
-Release:	2
+Version:	1.1.4
+Release:	1
 License:	GPL v3+
 Group:		Libraries
 #Source0Download: https://github.com/frankmorgner/openpace/releases
 Source0:	https://github.com/frankmorgner/openpace/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	55f22686b89026fd40f60358cc2247d0
+# Source0-md5:	fca6f9ca708e16fe297e40121ca84c5f
 Patch0:		%{name}-optflags.patch
 Patch1:		%{name}-ruby.patch
-Patch2:		build.patch
+Patch2:		python-install.patch
 URL:		https://frankmorgner.github.io/openpace/
 BuildRequires:	autoconf >= 2.67
 BuildRequires:	automake
@@ -32,6 +32,7 @@ BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 1.0.2
 BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python-devel >= 2}
+%{?with_python:BuildRequires:	python-setuptools}
 %{?with_ruby:BuildRequires:	ruby-devel}
 BuildRequires:	sphinx-pdg
 BuildRequires:	swig

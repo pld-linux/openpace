@@ -1,0 +1,11 @@
+--- openpace-1.1.4/bindings/python/Makefile.am.orig	2026-04-27 21:52:57.201365070 +0200
++++ openpace-1.1.4/bindings/python/Makefile.am	2026-04-28 00:01:38.320370526 +0200
+@@ -45,7 +45,7 @@
+ 
+ # Androids implementation does not honour --root=$(DESTDIR) so we change the prefix
+ install-exec-local:
+-	env CC="$(CC)" $(PYTHON) setup.py install --prefix=$(DESTDIR)$(prefix) --exec-prefix=$(DESTDIR)$(exec_prefix) --record installed_files.txt
++	env CC="$(CC)" $(PYTHON) setup.py install --prefix=$(prefix) --exec-prefix=$(exec_prefix) --root=$(DESTDIR) --record installed_files.txt
+ 
+ uninstall-local:
+ 	cat installed_files.txt | xargs rm -rf
