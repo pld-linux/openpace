@@ -34,7 +34,7 @@ BuildRequires:	help2man
 BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 1.0.2
 BuildRequires:	pkgconfig
-%{?with_python:BuildRequires:	python-devel >= 2}
+%{?with_python:BuildRequires:	python3-devel}
 %{?with_python:BuildRequires:	python-setuptools}
 BuildRequires:	rpmbuild(macros) >= 2.021
 %{?with_ruby:BuildRequires:	ruby-devel}
@@ -42,6 +42,7 @@ BuildRequires:	sphinx-pdg
 BuildRequires:	swig
 %{?with_python:BuildRequires:	swig-python}
 %{?with_ruby:BuildRequires:	swig-ruby}
+Obsoletes:	python-openpace < 1.1.4
 Requires:	openssl >= 1.0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -113,18 +114,18 @@ Java binding for OpenPACE library.
 %description -n java-openpace -l pl.UTF-8
 Wiązania Javy do biblioteki OpenPACE.
 
-%package -n python-openpace
-Summary:	Python binding for OpenPACE library
-Summary(pl.UTF-8):	Wiązania Pythona do biblioteki OpenPACE
+%package -n python3-openpace
+Summary:	Python 3 binding for OpenPACE library
+Summary(pl.UTF-8):	Wiązania Pythona 3 do biblioteki OpenPACE
 Group:		Development/Languages/Python
 Requires:	%{name} = %{version}-%{release}
-Requires:	python-modules
+Requires:	python3-modules
 
-%description -n python-openpace
-Python binding for OpenPACE library.
+%description -n python3-openpace
+Python 3 binding for OpenPACE library.
 
-%description -n python-openpace -l pl.UTF-8
-Wiązania Pythona do biblioteki OpenPACE.
+%description -n python3-openpace -l pl.UTF-8
+Wiązania Pythona 3 do biblioteki OpenPACE.
 
 %package -n ruby-openpace
 Summary:	Ruby binding for OpenPACE library
@@ -155,7 +156,7 @@ Wiązania języka Ruby do biblioteki OpenPACE.
 %{__autoheader}
 %{__automake}
 %configure \
-	PYTHON=%{__python} \
+	PYTHON=%{__python3} \
 	JAVAC="%{javac}" \
 	_ACJNI_JAVAC="%{javac}" \
 	%{?with_golang:--enable-go} \
@@ -180,11 +181,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*eac.la
 # packaged as %doc
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/openpace
-
-%if %{with python}
-%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
-%py_postclean
-%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -242,14 +238,15 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %if %{with python}
-%files -n python-openpace
+%files -n python3-openpace
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cvc_rehash
-%attr(755,root,root) %{py_sitedir}/_eac.so
-%{py_sitedir}/chat.py[co]
-%{py_sitedir}/eac.py[co]
-%{py_sitedir}/pace_entity.py[co]
-%{py_sitedir}/OpenPACE-%{version}-py*.egg-info
+%attr(755,root,root) %{py3_sitedir}/_eac.*.so
+%{py3_sitedir}/__pycache__/*
+%{py3_sitedir}/chat.py
+%{py3_sitedir}/eac.py
+%{py3_sitedir}/pace_entity.py
+%{py3_sitedir}/OpenPACE-%{version}-py*.egg-info
 %endif
 
 %if %{with ruby}
