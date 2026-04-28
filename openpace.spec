@@ -35,7 +35,7 @@ BuildRequires:	libtool
 BuildRequires:	openssl-devel >= 1.0.2
 BuildRequires:	pkgconfig
 %{?with_python:BuildRequires:	python3-devel}
-%{?with_python:BuildRequires:	python-setuptools}
+%{?with_python:BuildRequires:	python3-setuptools}
 BuildRequires:	rpmbuild(macros) >= 2.021
 %{?with_ruby:BuildRequires:	ruby-devel}
 BuildRequires:	sphinx-pdg
